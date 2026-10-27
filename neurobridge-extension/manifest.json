@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "NeuroBridge — In-Page Assistant",
+  "version": "0.1.0",
+  "description": "Select any text on any page and simplify it or break it into steps, right where you're reading. Uses your own Gemini API key.",
+  "permissions": ["contextMenus", "storage", "activeTab", "scripting", "offscreen"],
+  "host_permissions": ["https://generativelanguage.googleapis.com/*", "<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "NeuroBridge"
+  }
+}
